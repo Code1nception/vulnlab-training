@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ef">
+  <title>VulnLab | Security practice, locally</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="VulnLab home"><span class="brand-mark">V</span><span>vuln<span class="brand-light">lab</span></span></a>
+      <div class="side-caption">LEARNING SPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#dashboard"><span class="nav-icon">◫</span> Overview</a>
+        <a class="nav-link" href="#labs"><span class="nav-icon">⌘</span> All labs <span class="nav-count">05</span></a>
+      </nav>
+      <div class="side-bottom">
+        <div class="local-status"><span class="status-dot"></span><div><strong>Local sandbox</strong><small>Isolated training app</small></div></div>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color mode" aria-pressed="false">
+          <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+          <span class="theme-toggle-text">Light mode</span>
+        </button>
+        <button class="reset-link" id="reset-progress" type="button">↺ &nbsp; Reset all progress</button>
+        <div class="side-version">VULNLAB <span>·</span> LEARN SAFELY</div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar"><div class="breadcrumb">LEARNING SPACE <span>/</span> <strong>OVERVIEW</strong></div><div class="top-status"><span class="status-dot"></span> RUNNING LOCALLY</div></header>
+      <section class="welcome-row">
+        <div><div class="eyebrow">YOUR SECURITY WORKBENCH</div><h1>Learn by <span>breaking things.</span></h1><p class="welcome-copy">Five common vulnerabilities. One safe place to understand how they work, and how to stop them.</p></div>
+        <div class="welcome-stamp"><span class="stamp-top">PRACTICE ENVIRONMENT</span><strong>LOCAL<span>_ONLY</span></strong><span class="stamp-bottom">SYNTHETIC DATA · NO EXTERNAL TARGETS</span></div>
+      </section>
+
+      <section class="progress-panel" aria-label="Learning progress">
+        <div class="progress-heading"><div><span class="section-kicker">YOUR PROGRESS</span><h2>A little more secure, every lab.</h2></div><span class="progress-number" id="progress-label">0 <small>/ 5 COMPLETE</small></span></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-bottom"><span id="progress-message">Pick a lab to get started</span><div class="progress-steps" id="progress-steps"><i></i><i></i><i></i><i></i><i></i></div></div>
+      </section>
+
+      <section class="labs-section" id="labs">
+        <div class="section-heading"><div><span class="section-kicker">THE PLAYGROUND</span><h2>Choose a vulnerability</h2></div><span class="lab-total">05 LABS <span>·</span> BEGINNER FRIENDLY</span></div>
+        <div class="lab-grid" id="lab-grid"></div>
+      </section>
+      <footer class="page-footer"><span>VULNLAB / LOCAL TRAINING BUILD</span><span>All identities and data are fictional.</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="lab-modal" hidden>
+    <section class="lab-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <header class="modal-header"><div class="modal-brand"><span class="brand-mark small">V</span><span>VULNLAB <span class="modal-divider">/</span> <span id="modal-category">LAB</span></span></div><button class="icon-button" id="close-modal" aria-label="Close lab">×</button></header>
+      <div class="modal-body">
+        <div class="modal-intro"><div class="eyebrow" id="modal-eyebrow">LAB 01 · ACCESS CONTROL</div><h2 id="modal-title">Lab title</h2><p id="modal-description"></p></div>
+        <div class="mode-tabs" role="tablist"><button class="mode-tab active" data-mode="walkthrough" role="tab" aria-selected="true">01 &nbsp; Walkthrough</button><button class="mode-tab" data-mode="practice" role="tab" aria-selected="false">02 &nbsp; Practice</button></div>
+        <div class="lab-workspace"><aside class="lesson-rail"><span class="rail-label">IN THIS LAB</span><div class="lesson-steps" id="lesson-steps"></div><div class="lesson-tip"><span>FIELD NOTE</span><p id="field-note"></p></div></aside><div class="lab-stage" id="lab-stage"></div></div>
+      </div>
+    </section>
+  </div>
+  <div class="notice-backdrop" id="notice-modal" hidden>
+    <section class="notice-modal" role="dialog" aria-modal="true" aria-labelledby="notice-title">
+      <div class="notice-mark" id="notice-mark">?</div>
+      <div class="notice-eyebrow" id="notice-eyebrow">LAB HINT</div>
+      <h2 id="notice-title">A useful clue</h2>
+      <p id="notice-message"></p>
+      <div class="notice-count" id="notice-count"></div>
+      <div class="notice-actions" id="notice-actions"></div>
+    </section>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
